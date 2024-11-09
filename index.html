@@ -1,1 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fashion Outfit Sketch Generation</title>
+<meta name="title" content="Fashion Outfit Sketch Generation">
+<meta name="description" content="Showcase of Images Generated from Prompts">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fashionoutfitgen.github.io">
+<meta property="og:title" content="Fashion Outfit Sketch Generation">
+<meta property="og:description" content="Showcase of Images Generated from Prompts">
+<meta property="og:image" content="/assets/images/favicon.png">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://fashionoutfitgen.github.io">
+<meta property="twitter:title" content="Fashion Outfit Sketch Generation">
+<meta property="twitter:description" content="Anonymous submission to CVPR 2025">
+<meta property="twitter:image" content="">
 
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/assets/css/animate.css" />
+<link rel="stylesheet" href="/assets/css/lineicons.css" />
+<link rel="stylesheet" href="/assets/css/ud-styles.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<style>
+        /* Hero Section Styles */
+        .ud-hero-title {
+            border-right: 2px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: blink 0.7s step-end infinite;
+            max-width: 100%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-left: auto;
+            margin-right: auto;
+            white-space: normal;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+<style>
+ /* Carousel Styles */
+        .carousel-container2 {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+padding: 0 10px;
+        }
+
+        .carousel2 {
+            display: flex;
+            transition: transform 0.5s ease;
+width: 100%;
+        }
+
+        .carousel-item2 {
+    flex: 1 0 100%; /* Ensures each item takes 100% of the container */
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left; /* Align text to the left */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 0;
+    overflow: hidden; /* Prevent overflow */
+        }
+
+        .carousel-item2 p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .play-button2 {
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .play-button2:hover {
+            background-color: #ff5a49;
+        }
+
+        /* Modal Styles */
+        .modal2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content2 {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .modal2 img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .modal2 .close-btn2 {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Navigation Buttons for Carousel */
+        .carousel-nav2 {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+ z-index: 1;
+
+padding: 0 10px; /* Ensure there's padding */
+        }
+
+        .nav-button2 {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+        }
+
+        .nav-button2:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+</style>
+<style>
+@import url("https://fonts.cdnfonts.com/css/fira-mono");
+
+html {
+	font-family: "fira-mono";
+	font-optical-sizing: auto;
+	font-size: 16px;
+}
+
+.card {
+	width: 60vw;
+	min-height: 25em;
+	margin: 5em auto;
+	background: hsl(250 20% 2%);
+	border-radius: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	z-index: 1;
+	-webkit-box-shadow: 0px 0px 45px 6px rgba(0, 255, 250, 0.6);
+	-moz-box-shadow: 0px 0px 45px 6px rgba(0, 255, 250, 0.6);
+	box-shadow: 0px 0px 55px 0px rgba(0, 255, 250, 0.6);
+}
+
+.tools {
+	display: flex;
+	align-items: center;
+	padding: 14px;
+}
+
+.circle {
+	padding: 0 4px;
+}
+
+.box {
+	display: block;
+	align-items: center;
+	width: 10px;
+	height: 10px;
+	padding: 1px;
+	border-radius: 50%;
+}
+
+.red {
+	background-color: #ff605c;
+}
+
+.yellow {
+	background-color: #ffbd44;
+}
+
+.green {
+	background-color: #00ca4e;
+}
+
+section {
+	display: block;
+	width: 100vw;
+	align-items: center;
+	place-content: center;
+	overflow: hidden;
+}
+
+.card_content {
+	padding-top: 1.5em;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+code {
+	font-family: "fira-mono", monospace;
+	font-size: 1em;
+	font-weight: 500;
+	color: #fff;
+}
+.label{
+color:green;
+}
+</style>
+</head>
+<body>
+<section class="ud-hero" id="home" style="background: radial-gradient(circle, #1D3F72, #2ED2C9);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
+                        <h1 class="ud-hero-title" id="typing-title"></h1>
+                        <p class="ud-hero-desc">
+                            An Anonymous Submission to CVPR 2025
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+    <section id="about" class="ud-about">
+        <div class="container">
+            <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
+                <div class="ud-about-content-wrapper">
+                    <div class="ud-about-content" style="max-width:100%;">
+                        <h2>Abstract</h2>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+        <div class="ud-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <ul class="ud-footer-bottom-left">   
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="ud-footer-bottom-right">
+                            Template from <a href="https://uideck.com" rel="nofollow" target="_blank">UIdeck</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<a href="javascript:void(0)" class="back-to-top">
+<i class="lni lni-chevron-up"></i>
+</a>
+
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/wow.min.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
